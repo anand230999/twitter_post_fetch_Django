@@ -1,0 +1,22 @@
+<!DOCTYPE html >
+ <html>
+    <head>
+      <title> Twitter tweets </title>
+    </head>
+    <body>
+      <div>
+          <h1>Twitter Tweets </h1>
+      </div>
+      <div>
+        <form action="/tweets/tweets_list/tweets_print/" method="get">
+          {% csrf_token %}
+          Username:<input type="text" name='N'>
+          Count:<input type="text" name='C'>
+          <input type="submit" value="OK">
+        </form>
+          {% for tt in tweets %}
+            {{ tt }}
+          {% endfor %}
+      </div>
+    </body>
+</html>
