@@ -1,6 +1,10 @@
 <!DOCTYPE html >
  <html>
     <head>
+      {% load staticfiles %}
+      <script src="{% static "js/jquery-1.11.1.js" %}"></script>
+      <script src="{% static "js/tweets-jquery.js" %}"></script>
+      <script src="{% static "js/tweets-ajax.js" %}"></script>
       <title> Twitter tweets </title>
     </head>
     <body>
@@ -8,15 +12,15 @@
           <h1>Twitter Tweets </h1>
       </div>
       <div>
-        <form action="/tweets/tweets_list/tweets_print/" method="get">
+      <form id="tweet_form"> 
           {% csrf_token %}
-          Username:<input type="text" name='N'>
-          Count:<input type="text" name='C'>
-          <input type="submit" value="OK">
-        </form>
-          {% for tt in tweets %}
-            {{ tt }}
-          {% endfor %}
-      </div>
+          Username:<input type="text" id='name'>
+          Count:<input type="text" id='count'>
+          <input type="submit" value="SUBMIT" />
+      </form>
+      </div> 
+          <div>
+          <strong id="tweets_found">{{ tweets }}</strong>
+          </div>
     </body>
 </html>

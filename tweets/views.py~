@@ -6,15 +6,11 @@ import json
 
 @csrf_protect
 def tweets_list(request):
-
-    return render(request,'tweets/tweets_list.html',{})
-
-def tweets_print(request):
-    response_data = {}
-    if request.method == 'GET':
-        name = request.GET['name']
-        count = request.GET['count']
+"""    if request.POST:
         tweets = []
+        name = request.POST.get('name')
+        count = request.GET.get('count')
+        print name
         CONSUMER_KEY = "3AftlqM1umGMroSjZkpXr3GUH"
         CONSUMER_SECRET = "jchT7UAxWNcWlbyAFOkLgRSRcY56cDGuSLPMunAnW4ZouD91rm"
         ACCESS_KEY = "172601787-hgzlSicp47ARWKzYFvrjiiSPDBBvKbxwoVuvL9Q5"
@@ -23,12 +19,17 @@ def tweets_print(request):
         access_token = oauth.Token(key=ACCESS_KEY, secret=ACCESS_SECRET)
         client = oauth.Client(consumer, access_token)
         url= "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="+str(name)+"&count="+str(count)
-        print url
         resp, data = client.request(url)
         tweet = json.loads(data)
         for t in tweet:
             tweets.append(t['text'])      
         name=""
-        response_data['message'] = tweets
-        return HttpResponse(json.dumps(response_data),content_type="application/json")
+        return HttpResponse(name )
+"""
+    return render(request,'tweets/tweets_list.html',{})
+
+def tweets_print(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        count = request.POST['counti']
     return HttpResponse()
