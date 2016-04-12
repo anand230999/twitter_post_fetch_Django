@@ -27,7 +27,7 @@ def tweets_print(request):
         resp, data = client.request(url)
         tweet = json.loads(data)
         for t in tweet:
-            tweets.append(t['text'])      
+            tweets.append("<p>"+t['text']+"<p>")      
         name=""
         response_data['message'] = tweets
         return HttpResponse(json.dumps(response_data),content_type="application/json")
