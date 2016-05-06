@@ -20,7 +20,6 @@ def tweets_print(request):
         access_token = oauth.Token(key=ACCESS_KEY, secret=ACCESS_SECRET)
         client = oauth.Client(consumer, access_token)
         url= "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name="+str(name)+"&count="+str(count)
-        print url
         resp, data = client.request(url)
         tweet = json.loads(data)
         for t in tweet:
