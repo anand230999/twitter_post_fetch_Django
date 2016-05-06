@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.views.decorators.csrf import csrf_protect
 import oauth2 as oauth
 import json
+from tweets.keys import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET
 
 @csrf_protect
 def tweets_list(request):
@@ -15,10 +16,6 @@ def tweets_print(request):
         name = request.GET['name']
         count = request.GET['count']
         tweets = []
-        CONSUMER_KEY = "3AftlqM1umGMroSjZkpXr3GUH"
-        CONSUMER_SECRET = "jchT7UAxWNcWlbyAFOkLgRSRcY56cDGuSLPMunAnW4ZouD91rm"
-        ACCESS_KEY = "172601787-hgzlSicp47ARWKzYFvrjiiSPDBBvKbxwoVuvL9Q5"
-        ACCESS_SECRET = "TznA0AKodZ2O7JI6lfz6PAM0lRDxtEtoHInP5ebU3sg37"
         consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
         access_token = oauth.Token(key=ACCESS_KEY, secret=ACCESS_SECRET)
         client = oauth.Client(consumer, access_token)
